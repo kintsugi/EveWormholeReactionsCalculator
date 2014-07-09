@@ -1,0 +1,18 @@
+EVE Wormhole Reaction Calculator Project Proposal
+
+	The EVE Wormhole Reaction Calculator is a tool designed for the MMORPG EVE Online, a glorified economy simulator. It's purpose is to calculate the most beneficial course of action in terms of total revenue,
+profit margin, and hours of effort. It focuses on a niche of game activity called “polymer reactions” which is the combination of multiple digital materials known as ore and gas in a “reactor”. Over a period 
+of time, the process completes a resultant named a “polymer”, a new material not only used in more steps of production of other materials, but also with an inherently higher economic value than the original 
+materials submitted into the process due to it's scarcity.
+
+	The developers of EVE Online have launched an initiative called the EVE API that provides third party tools and developers with dynamic information from the game in real time. It utilizes both live data in the
+form of XML documents and static data called the CCP static data dump that provides a SQL database of in-game objects and entities. The EVE Wormhole Reaction Calculator will use the EVE API in calculations and to 
+provide numerical and string identification of items and processes contained in a SQLite database. The SQLite database will be used in formatting queries to the EVE-Central Web API using SAX(Simple API for XML). This 
+then provides a XML document parsed by SAX containing aggregate market statistics from within the game needed in economic calculations.
+
+	A GUI will be designed for the user to interface with the EVE Wormhole Reaction calculator. From the GUI, the user will be able to choose the various variables that describe their situation. For example, the user
+will be able choose the type of reaction they are conducting, the “class” of wormhole they are in, and enter the statistics for their game character.
+
+	The underlying mechanic of EVE Online requires players to analyze their decisions. A common example is the decision whether to gather materials for something or buy it from somebody else. Depending on their 
+circumstances, it may be more profitable to gather the materials for themselves if they are too far away to buy from another person. The calculator is to focus on the previously described niche of wormhole reactions.
+Its end goal is to show what reaction should be performed and how much they will profit(including the costs of operations) to provide the user with a quantifiable result of their decision making.
