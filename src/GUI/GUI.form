@@ -4,9 +4,6 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="name" type="java.lang.String" value="mainFrame" noResource="true"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1043, 540]"/>
-    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -30,109 +27,49 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="titlePanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="editSetupButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="aboutButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="wormholeClassPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="reactionsMaterialsPanel" min="-2" max="-2" attributes="0"/>
-                          <Component id="outputPanel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="wormholeClassPanel" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="optimizeForPanel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="aboutButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="reactorsPanel" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="tablePanel" min="-2" pref="880" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="aboutButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="wormholeClassPanel" min="-2" pref="170" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="optimizeForPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="reactorsPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="27" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="titlePanel" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="editSetupButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="aboutButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="wormholeClassPanel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="reactionsMaterialsPanel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="outputPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <Component id="tablePanel" min="-2" pref="399" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="titlePanel">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder/>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="titleLabel" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="titleLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Eve Wormhole Reactions Calculator"/>
-            <Property name="toolTipText" type="java.lang.String" value="dafadsfadsfasdfasdf"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JButton" name="editSetupButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Setup"/>
-        <Property name="inheritsPopupMenu" type="boolean" value="true"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JPanel" name="wormholeClassPanel">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
           </Border>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[100, 177]"/>
         </Property>
       </Properties>
 
@@ -142,13 +79,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="C6Button" min="-2" max="-2" attributes="0"/>
-                      <Component id="C5Button" min="-2" max="-2" attributes="0"/>
-                      <Component id="C4Button" min="-2" max="-2" attributes="0"/>
                       <Component id="C3Button" min="-2" max="-2" attributes="0"/>
+                      <Component id="C4Button" min="-2" max="-2" attributes="0"/>
                       <Component id="C2Button" min="-2" max="-2" attributes="0"/>
+                      <Component id="C1Button" min="-2" max="-2" attributes="0"/>
+                      <Component id="C5Button" min="-2" max="-2" attributes="0"/>
+                      <Component id="C6Button" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="wormholeClassLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="C1Button" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -157,7 +94,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Component id="wormholeClassLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="C1Button" min="-2" max="-2" attributes="0"/>
@@ -171,7 +108,7 @@
                   <Component id="C5Button" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="C6Button" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -214,22 +151,31 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="reactionsMaterialsPanel">
+    <Container class="javax.swing.JPanel" name="tablePanel">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="reactionsScrollPane" alignment="0" min="-2" pref="497" max="-2" attributes="0"/>
-                      <Component id="reactionsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="reactionsLabel" min="-2" pref="59" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="470" max="-2" attributes="0"/>
+                                  <Component id="setupLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="outputPanel" min="-2" pref="880" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="reactionsScrollPane" min="-2" pref="523" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="setupPanel" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="materialsLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="materialsScrollPane" min="-2" pref="399" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -238,16 +184,16 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="reactionsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="materialsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="setupLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="reactionsScrollPane" pref="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="materialsScrollPane" min="-2" pref="76" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="96" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="setupPanel" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="outputPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -274,10 +220,10 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="9">
                     <Column editable="false" title="Polymer Name" type="java.lang.String"/>
-                    <Column editable="false" title="Profit Margin" type="java.lang.Double"/>
+                    <Column editable="false" title="Profit/Hour" type="java.lang.Double"/>
                     <Column editable="false" title="Revenue/Hour" type="java.lang.Double"/>
-                    <Column editable="true" title="Volume (m3)" type="java.lang.Object"/>
-                    <Column editable="false" title="ISK/Unit" type="java.lang.Double"/>
+                    <Column editable="false" title=" Efficiency" type="java.lang.Double"/>
+                    <Column editable="false" title="Time" type="java.lang.Double"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -286,36 +232,359 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JScrollPane" name="materialsScrollPane">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
+        <Container class="javax.swing.JPanel" name="setupPanel">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cycleTimeLabel" max="32767" attributes="0"/>
+                          <Component id="jTextField1" max="32767" attributes="0"/>
+                          <Component id="m3PerCycleLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="m3PerCycleTextField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="wipLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cycleTimeLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="m3PerCycleLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="m3PerCycleTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="wipLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="materialsTable">
+            <Component class="javax.swing.JLabel" name="cycleTimeLabel">
               <Properties>
-                <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="3">
-                    <Column editable="true" title="Material Name" type="java.lang.String"/>
-                    <Column editable="true" title="Quantity" type="java.lang.Object"/>
-                    <Column editable="true" title="Volume" type="java.lang.Object"/>
-                    <Column editable="true" title="ISK/Unit" type="java.lang.Object"/>
-                  </Table>
-                </Property>
-                <Property name="focusCycleRoot" type="boolean" value="true"/>
-                <Property name="rowSelectionAllowed" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="Cycle Time (s)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField1">
+            </Component>
+            <Component class="javax.swing.JLabel" name="m3PerCycleLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="m3 Per Cycle"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="m3PerCycleTextField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="wipLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="WIP"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="materialsLabel">
+        <Container class="javax.swing.JPanel" name="outputPanel">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="outputLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="removeReactionButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="addReactionButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="calculateButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="optimizeOutputButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="outputPane" min="-2" pref="524" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="materialsScrollPane" min="-2" pref="350" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="totalMonthlyProfitTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="totalMonthlyRevenueTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="totalMonthlyRevenueLabel" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="totalMonthlyProfitLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="monthlyOutputVolumeLabel" max="32767" attributes="0"/>
+                                          <Component id="monthlyOutputVolumeTextField" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="monthlyMiningTimeLabel" max="32767" attributes="0"/>
+                                          <Component id="monthlyMiningTimeTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="monthlyInputVolumeLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="monthlyInputVolumeTextField" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="averageEfficiencyLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="averageEfficiencyTextField" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="addReactionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="removeReactionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="outputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="calculateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="optimizeOutputButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="materialsScrollPane" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="totalMonthlyRevenueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="monthlyInputVolumeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="averageEfficiencyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="totalMonthlyRevenueTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="monthlyInputVolumeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="averageEfficiencyTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="totalMonthlyProfitLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="monthlyOutputVolumeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="monthlyMiningTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="totalMonthlyProfitTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="monthlyOutputVolumeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="monthlyMiningTimeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="outputPane" min="-2" pref="171" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="outputLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Output"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="outputPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="outputTable">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="6" rowCount="9">
+                        <Column editable="false" title="Polymer Name" type="java.lang.String"/>
+                        <Column editable="false" title="Profit/Month" type="java.lang.Double"/>
+                        <Column editable="false" title="Revenue/Month" type="java.lang.Double"/>
+                        <Column editable="false" title="Total Time(Hr)" type="java.lang.Double"/>
+                        <Column editable="false" title="Quantity/Month" type="java.lang.Double"/>
+                        <Column editable="false" title="Volume/Month" type="java.lang.Double"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="removeReactionButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Remove Reaction"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="addReactionButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Add Reaction"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addReactionButtonActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="materialsScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="materialsTable">
+                  <Properties>
+                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="3">
+                        <Column editable="false" title="Material Name" type="java.lang.String"/>
+                        <Column editable="false" title="Quantity/Month" type="java.lang.Double"/>
+                        <Column editable="false" title="Volume/Month" type="java.lang.Double"/>
+                        <Column editable="false" title="Mining Time(Hr)" type="java.lang.Double"/>
+                      </Table>
+                    </Property>
+                    <Property name="focusCycleRoot" type="boolean" value="true"/>
+                    <Property name="rowSelectionAllowed" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="totalMonthlyRevenueLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total Monthly Revenue"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="totalMonthlyRevenueTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="totalMonthlyProfitLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total Monthly Profit"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="totalMonthlyProfitTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="monthlyInputVolumeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monthly Input Volume"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="monthlyInputVolumeTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="monthlyInputVolumeTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="monthlyOutputVolumeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monthly Output Volume"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="monthlyOutputVolumeTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="averageEfficiencyLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Average Efficiency"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="averageEfficiencyTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="averageEfficiencyTextFieldActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="monthlyMiningTimeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monthly Mining Time(Hr)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="monthlyMiningTimeTextField">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="calculateButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Calculate"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="optimizeOutputButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Optimize Output"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="setupLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Materials"/>
+            <Property name="text" type="java.lang.String" value="Setup"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -325,85 +594,127 @@
         <Property name="text" type="java.lang.String" value="About"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="outputPanel">
+    <Container class="javax.swing.JPanel" name="optimizeForPanel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <Component id="outputLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="calculateButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="timeButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="optimizeForLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="marginButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="efficiencyButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Component id="outputPane" alignment="1" min="-2" pref="495" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="outputLabel" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="calculateButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="outputPane" min="-2" pref="144" max="-2" attributes="0"/>
-                  <EmptySpace pref="146" max="32767" attributes="0"/>
+                  <Component id="optimizeForLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="marginButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="timeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="efficiencyButton" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="outputLabel">
+        <Component class="javax.swing.JLabel" name="optimizeForLabel">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Output"/>
+            <Property name="text" type="java.lang.String" value="Optimize For"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="outputPane">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="outputTable">
-              <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="1" rowCount="0">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                  </Table>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JRadioButton" name="marginButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Remove Reaction"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Add Reaction"/>
-            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="text" type="java.lang.String" value="Margin"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marginButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="calculateButton">
+        <Component class="javax.swing.JRadioButton" name="timeButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Calculate"/>
+            <Property name="text" type="java.lang.String" value="Time"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="timeButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="efficiencyButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Efficiency"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="efficiencyButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="reactorsPanel">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+            <EtchetBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="reactorsLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="reactorsTextField" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="reactorsLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="reactorsTextField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JTextField" name="reactorsTextField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reactorsTextFieldActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="reactorsLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="# Reactors"/>
           </Properties>
         </Component>
       </SubComponents>
