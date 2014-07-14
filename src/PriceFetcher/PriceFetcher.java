@@ -1,11 +1,11 @@
 package PriceFetcher;
 import java.util.List;
 import java.util.ArrayList;
-import Databases.ProgramDatabase;
+import Database.ProgramDatabase;
 
 public class PriceFetcher {
     
-    private final List<MarketQueryContainer> items;
+    private final List<Item> items;
     
     public PriceFetcher() {
         items = new ArrayList();
@@ -13,28 +13,28 @@ public class PriceFetcher {
         List<String> itemNames = db.getItemNames();
         List<String> itemIDs = db.getItemIDs();
         for(int i = 0; i < itemNames.size(); i++) {
-            items.add(new MarketQueryContainer(itemNames.get(i), Integer.parseInt(itemIDs.get(i))));
+            items.add(new Item(itemNames.get(i), Integer.parseInt(itemIDs.get(i))));
         }
     }
     
-    public double getPrice(int id) {
-        for(MarketQueryContainer item : items) {
-            if(id == item.getID()) {
-                item.Update();
-                return item.getPrice();
+    public Item getItem(int id) {
+        for(Item item : items) {
+            if(id == item.getID()) { 
+                return item;
             }
         }
-        return 0;
+        System.err.println("No item matching ID of '" + id + "'");
+        return null;
     }
     
-    public double getPrice(String name) {
-        for(MarketQueryContainer item : items) {
-            if(name.equalsIgnoreCase(item.getName())) {
-                item.Update();
-                return item.getPrice();
+    public Item getItem(String name) {
+        for(Item item : items) {
+            if(name.equalsIgnoreCase(item.getName())) { 
+                return item;
             }
         }
-        return 0;
+        System.err.println("No item matching name of '" + name + "'");
+        return null;
     }
     
 }

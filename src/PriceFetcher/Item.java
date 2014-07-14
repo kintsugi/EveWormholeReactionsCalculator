@@ -4,17 +4,17 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 import java.net.URL;
 
-public class MarketQueryContainer {
+public class Item {
     
     private final String name;
     private final int id;
     private double price;
     
-    public MarketQueryContainer(String newName, int newID) {
-        name = newName; id = newID; Update();
+    public Item(String newName, int newID) {
+        name = newName; id = newID; update();
     }
     
-    public void Update() {
+    public void update() {
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();

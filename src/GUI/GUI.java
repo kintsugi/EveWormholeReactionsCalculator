@@ -1,16 +1,39 @@
 package GUI;
+import java.util.List;
 import javax.swing.UIManager;
-import PriceFetcher.PriceFetcher;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ButtonGroup;
+import Calculator.Calculator;
+import Database.ProgramDatabase;
+import java.awt.Color;
 
 public class GUI extends javax.swing.JFrame {
     
-    private PriceFetcher prices;
-    
     public GUI() {
         initComponents();
-        prices = new PriceFetcher();
+        ProgramDatabase db = new ProgramDatabase();
+        Calculator calc = new Calculator();
+        ButtonGroup wormholeClassButtonGroup = new ButtonGroup();
+        ButtonGroup optimizeForButtonGroup = new ButtonGroup();
+        wormholeClassButtonGroup.add(C1Button);
+        wormholeClassButtonGroup.add(C2Button);
+        wormholeClassButtonGroup.add(C3Button);
+        wormholeClassButtonGroup.add(C4Button);
+        wormholeClassButtonGroup.add(C5Button);
+        wormholeClassButtonGroup.add(C6Button);
+        wormholeClassButtonGroup.setSelected(C6Button.getModel(), true);
+        optimizeForButtonGroup.add(marginButton);
+        optimizeForButtonGroup.add(timeButton);
+        optimizeForButtonGroup.add(efficiencyButton);
+        optimizeForButtonGroup.setSelected(marginButton.getModel(), true);
+        cycleTimeTextField.setText(db.getUserData("Cycle Time"));
+        m3PerCycleTextField.setText(db.getUserData("m3 Per Cycle"));
+        List<String> polymerNames = db.getReactions();
+        for(int i = 0; i < reactionsTable.getRowCount(); i++) {
+            reactionsTable.setValueAt(polymerNames.get(i), i, 0);
+        }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,10 +52,11 @@ public class GUI extends javax.swing.JFrame {
         reactionsTable = new javax.swing.JTable();
         setupPanel = new javax.swing.JPanel();
         cycleTimeLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        cycleTimeTextField = new javax.swing.JTextField();
         m3PerCycleLabel = new javax.swing.JLabel();
         m3PerCycleTextField = new javax.swing.JTextField();
         wipLabel = new javax.swing.JLabel();
+        saveButton = new javax.swing.JButton();
         outputPanel = new javax.swing.JPanel();
         outputLabel = new javax.swing.JLabel();
         outputPane = new javax.swing.JScrollPane();
@@ -166,9 +190,30 @@ public class GUI extends javax.swing.JFrame {
 
         cycleTimeLabel.setText("Cycle Time (s)");
 
+        cycleTimeTextField.setText("30");
+        cycleTimeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cycleTimeTextFieldActionPerformed(evt);
+            }
+        });
+
         m3PerCycleLabel.setText("m3 Per Cycle");
 
+        m3PerCycleTextField.setText("80");
+        m3PerCycleTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m3PerCycleTextFieldActionPerformed(evt);
+            }
+        });
+
         wipLabel.setText("WIP");
+
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout setupPanelLayout = new javax.swing.GroupLayout(setupPanel);
         setupPanel.setLayout(setupPanelLayout);
@@ -176,13 +221,16 @@ public class GUI extends javax.swing.JFrame {
             setupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(setupPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(setupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cycleTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(m3PerCycleLabel)
-                    .addComponent(m3PerCycleTextField))
-                .addGap(85, 85, 85)
-                .addComponent(wipLabel)
+                .addGroup(setupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(setupPanelLayout.createSequentialGroup()
+                        .addGroup(setupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cycleTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cycleTimeTextField)
+                            .addComponent(m3PerCycleLabel)
+                            .addComponent(m3PerCycleTextField))
+                        .addGap(85, 85, 85)
+                        .addComponent(wipLabel))
+                    .addComponent(saveButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         setupPanelLayout.setVerticalGroup(
@@ -191,14 +239,16 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(cycleTimeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cycleTimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(m3PerCycleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(setupPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(m3PerCycleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(wipLabel))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(saveButton)
+                .addContainerGap())
         );
 
         outputLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -318,6 +368,11 @@ public class GUI extends javax.swing.JFrame {
         monthlyMiningTimeTextField.setBackground(new java.awt.Color(255, 255, 255));
 
         calculateButton.setText("Calculate");
+        calculateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateButtonActionPerformed(evt);
+            }
+        });
 
         optimizeOutputButton.setText("Optimize Output");
 
@@ -598,6 +653,35 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_monthlyInputVolumeTextFieldActionPerformed
 
+    private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
+        // TODO add your handling code here:
+        ProgramDatabase db = new ProgramDatabase();
+        Calculator calc = new Calculator();
+        for(int i = 0; i < reactionsTable.getRowCount(); i++) {
+            Object rowObject = reactionsTable.getValueAt(i, 0);
+            String polymerName = rowObject.toString();
+            reactionsTable.setValueAt(calc.profitPerHour(polymerName), i, 1);
+            reactionsTable.setValueAt(calc.revenuePerHour(polymerName), i, 2);
+            reactionsTable.setValueAt(calc.efficiency(polymerName), i, 3);
+            reactionsTable.setValueAt(calc.time(polymerName), i, 4);
+            
+        }
+    }//GEN-LAST:event_calculateButtonActionPerformed
+
+    private void m3PerCycleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m3PerCycleTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m3PerCycleTextFieldActionPerformed
+
+    private void cycleTimeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cycleTimeTextFieldActionPerformed
+        
+    }//GEN-LAST:event_cycleTimeTextFieldActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        /*ProgramDatabase db = new ProgramDatabase();
+        db.setUserData("Cycle Time", cycleTimeTextField.getText());
+        db.setUserData("m3 Per Cycle", m3PerCycleTextField.getText());*/
+    }//GEN-LAST:event_saveButtonActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -638,8 +722,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField averageEfficiencyTextField;
     private javax.swing.JButton calculateButton;
     private javax.swing.JLabel cycleTimeLabel;
+    private javax.swing.JTextField cycleTimeTextField;
     private javax.swing.JRadioButton efficiencyButton;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel m3PerCycleLabel;
     private javax.swing.JTextField m3PerCycleTextField;
     private javax.swing.JRadioButton marginButton;
@@ -665,6 +749,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel reactorsPanel;
     private javax.swing.JTextField reactorsTextField;
     private javax.swing.JButton removeReactionButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JLabel setupLabel;
     private javax.swing.JPanel setupPanel;
     private javax.swing.JPanel tablePanel;
