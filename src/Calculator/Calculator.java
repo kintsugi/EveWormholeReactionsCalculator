@@ -31,9 +31,14 @@ public class Calculator {
         return polymer.getPrice() * Integer.parseInt(reactions.getWhere("BATCH", "NAME", reactionName));
     }
 
-    public double efficiency(String reactionName, double cycleTime, double m3PerCycle) {
-        //Efficiency: Profit per hour of mining for one reaction.
-        return (profitPerHour(reactionName)) / (1 / time(reactionName, cycleTime, m3PerCycle));
+    public double iskEfficiency(String reactionName, double cycleTime, double m3PerCycle) {
+        //ISK Efficiency: revenue per hour of mining for one reaction.
+        return (revenuePerHour(reactionName)) * ( time(reactionName, cycleTime, m3PerCycle));
+    }
+    
+    public double timeEfficiency(String reactionName, double cycleTime, double m3PerCycle) {
+        //Time Efficiency: reaction profit per hour of mining for one reaction.
+        return (profitPerHour(reactionName)) * ( time(reactionName, cycleTime, m3PerCycle));
     }
     
     public double time(String reactionName, double cycleTime, double m3PerCycle) {

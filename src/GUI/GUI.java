@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.math.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -31,6 +32,9 @@ public class GUI extends javax.swing.JFrame {
         } catch(IOException e) {
             e.printStackTrace();
         }
+        reactionsTable.getTableHeader().setReorderingAllowed(false);
+        outputTable.getTableHeader().setReorderingAllowed(false);
+        materialsTable.getTableHeader().setReorderingAllowed(false);
         setIconImage(iconImage);
         ProgramDatabase.load();
         ProgramDatabase db = new ProgramDatabase();
@@ -86,7 +90,7 @@ public class GUI extends javax.swing.JFrame {
             String polymerName = rowObject.toString();
             reactionsTable.setValueAt(calc.profitPerHour(polymerName), i, 1);
             reactionsTable.setValueAt(calc.revenuePerHour(polymerName), i, 2);
-            reactionsTable.setValueAt(calc.efficiency(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 3);
+            reactionsTable.setValueAt(calc.iskEfficiency(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 3);
             reactionsTable.setValueAt(calc.time(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 4);   
         }
         for(int i = 0; i < outputTable.getRowCount(); i++) {
@@ -125,7 +129,7 @@ public class GUI extends javax.swing.JFrame {
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
             String polymerName = rowObject.toString();
-            BigDecimal efficiency = new BigDecimal(Double.toString(calc.efficiency(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()))));
+            BigDecimal efficiency = new BigDecimal(Double.toString(calc.iskEfficiency(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()))));
             totalEfficiency = totalEfficiency.add(efficiency);
         }
         int rowCount = outputTable.getRowCount();
@@ -241,7 +245,6 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eve Wormhole Reactions Calculator");
-        setAlwaysOnTop(true);
         setLocationByPlatform(true);
         setName("mainFrame"); // NOI18N
         setResizable(false);
@@ -406,7 +409,7 @@ public class GUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Polymer Name", "Profit/Month", "Revenue/Month", "Total Time(Hr)", "Volume/Month"
+                "Polymer Name", "Profit/Month", "Revenue/Month", "Mining Hrs/Month", "Volume/Month"
             }
         ) {
             Class[] types = new Class [] {
@@ -894,19 +897,14 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Integer> selectedRows = new ArrayList<>(selectedRowsArray.length);
         for(int i = 0; i < selectedRowsArray.length; i++)
             selectedRows.add(selectedRowsArray[i]);
-
-        for (Integer selectedRow : selectedRows) {
-            for (int j = 0; j < outputTable.getRowCount(); j++) {
-                if (j == selectedRow) {
-                    ((DefaultTableModel)outputTable.getModel()).removeRow(selectedRow);
-                    j--;
-                }
-            }
-        }
+        Collections.sort(selectedRows, Collections.reverseOrder());
+        for (Integer selectedRow : selectedRows)
+            ((DefaultTableModel)outputTable.getModel()).removeRow(selectedRow);
         calculate();
     }//GEN-LAST:event_removeReactionButtonActionPerformed
 
     private void optimizeOutputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optimizeOutputButtonActionPerformed
+        Calculator calc = new Calculator();
         for(int i = 0; i < outputTable.getRowCount(); i++ ) {
             ((DefaultTableModel)outputTable.getModel()).removeRow(0); i--;
         }
@@ -925,12 +923,12 @@ public class GUI extends javax.swing.JFrame {
         } else if(optimizeTime) {
             double bestTime = 0; int bestTimeRow = 0;
             for(int i = 0; i < reactionsTable.getRowCount(); i++) {
-                if(bestTime < (double)reactionsTable.getValueAt(i, 4)) {
-                    bestTime = (double)reactionsTable.getValueAt(i, 4);
+                if(bestTime < calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()))) {
+                    bestTime = calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()));
                     bestTimeRow = i;
-                } else if(bestTime == (double)reactionsTable.getValueAt(i, 4)) {
+                } else if(bestTime == calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()))) {
                     if((double)reactionsTable.getValueAt(bestTimeRow, 4) < (double)reactionsTable.getValueAt(i, 4)) {
-                        bestTime = (double)reactionsTable.getValueAt(i, 4);
+                        bestTime = calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()));
                         bestTimeRow = i;
                     }
                 }

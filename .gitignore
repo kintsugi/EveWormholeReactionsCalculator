@@ -2,10 +2,6 @@
 Thumbs.db
 ehthumbs.db
 
-#Misc. Files
-build.xml
-manifest.mf
-
 # Folder config file
 Desktop.ini
 
@@ -41,4 +37,3 @@ Icon
 .Trashes
 /build/
 /dist/
-/nbproject/
