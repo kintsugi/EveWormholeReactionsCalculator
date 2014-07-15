@@ -10,6 +10,7 @@ It will be programmed in Java for my Java programming class.
 The Latest Version
 ------------------
 
+v0.1 Complete! Look here for a download link soon.
 Details of the latest version can be viewed on the currently public github
 repository under https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator
 
@@ -28,4 +29,13 @@ Kyle Salter
 Changelog
 ---------
 
-7/9/14: Initial Commit and Project Proposal Uploaded.
+9/7/14: Initial Commit and Project Proposal Uploaded.
+15/7/14 v0.1 Release
+
+Bugs
+----
+
+v0.1
+- Material Table does not always update when clicking on a row in the reactions and output table.
+- Remove reaction does not properly remove selected rows.
+- PDD Fullerene Fibers and Fulleroferrocene total time values do not match individual gas mining values.
