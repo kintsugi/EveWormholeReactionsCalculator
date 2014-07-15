@@ -1,17 +1,18 @@
 package PriceFetcher;
-import java.util.List;
 import java.util.ArrayList;
 import Database.ProgramDatabase;
+import Database.SQLiteTable;
 
 public class PriceFetcher {
     
-    private final List<Item> items;
+    private static ArrayList<Item> items;
     
-    public PriceFetcher() {
+    static public void load() {
         items = new ArrayList();
         ProgramDatabase db = new ProgramDatabase();
-        List<String> itemNames = db.getItemNames();
-        List<String> itemIDs = db.getItemIDs();
+        SQLiteTable itemTable = db.getItemTable();
+        ArrayList<String> itemNames = itemTable.getColumn("NAME");
+        ArrayList<String> itemIDs = itemTable.getColumn("ITEMID");
         for(int i = 0; i < itemNames.size(); i++) {
             items.add(new Item(itemNames.get(i), Integer.parseInt(itemIDs.get(i))));
         }
