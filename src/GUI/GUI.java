@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.math.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -243,6 +241,7 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eve Wormhole Reactions Calculator");
+        setAlwaysOnTop(true);
         setLocationByPlatform(true);
         setName("mainFrame"); // NOI18N
         setResizable(false);
@@ -895,9 +894,14 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Integer> selectedRows = new ArrayList<>(selectedRowsArray.length);
         for(int i = 0; i < selectedRowsArray.length; i++)
             selectedRows.add(selectedRowsArray[i]);
-        Collections.sort(selectedRows, Collections.reverseOrder());
+
         for (Integer selectedRow : selectedRows) {
-            ((DefaultTableModel)outputTable.getModel()).removeRow(selectedRow);
+            for (int j = 0; j < outputTable.getRowCount(); j++) {
+                if (j == selectedRow) {
+                    ((DefaultTableModel)outputTable.getModel()).removeRow(selectedRow);
+                    j--;
+                }
+            }
         }
         calculate();
     }//GEN-LAST:event_removeReactionButtonActionPerformed
