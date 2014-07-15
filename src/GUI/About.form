@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="About Eve Wormhole Reaction Calculator"/>
+    <Property name="locationByPlatform" type="boolean" value="true"/>
+    <Property name="type" type="java.awt.Window$Type" editor="org.netbeans.modules.form.editors.EnumEditor">
+      <Value id="POPUP"/>
+    </Property>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="textArea" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="aboutLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="186" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="createdByLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="versionLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="aboutLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="versionLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="createdByLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="textArea" pref="215" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="aboutLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Eve Wormhole Reaction Calculator"/>
+      </Properties>
+    </Component>
+    <Component class="java.awt.TextArea" name="textArea">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Text Cursor"/>
+        </Property>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="    ISK donations greatly appreciated! :) If you are so inclined,&#xa;please send to Kaiser Freiherr. Thank you.&#xa;&#xa;    If you encounter a problem, have a question or, anything else you&#xa;would like to say, please contact me on my github page at&#xa;https://github.com/KyleDanielSalter or through my email listed on that page.&#xa;&#xa;    Eve Wormhole Reaction Calculator is a optimzation tool for&#xa;hybridpolymer production. It&apos;s purpose is to calculate the most&#xa;beneficial course of action in terms of total revenue, profit margin,&#xa;and hours of effort. Start off by selecting a polymer and using the&#xa;add reaction button to add it to the output table. From there you&#xa;can see the calculated values to assist in your decision making.&#xa;If you would like to see the results of the most optimized output for&#xa;your circumstances, select the appropriate fields starting with &#xa;Wormhole class and then click Optimize Output.&#xa;&#xa;    Optimize for profit when you want the ISK/Hour, such as you are&#xa;getting your gas from a buyback or importing it.&#xa;    Optimize for time when you want to spend the least amount of time&#xa;mining gas. This is good when you lack the capital to buy the gas or&#xa;want to spend the least amount of time mining.&#xa;    Optimize for efficiency when you want the best ISK for your time.&#xa;&#xa;    Still early in development! While all planned features are complete&#xa;a lot of QA is needed.&#xa;&#xa;Notes:&#xa;    - Profit/Hour is the value of the polymer produced in one hour&#xa;      subtracted from the required materials.&#xa;    - Efficiency is a generated value that is essentially the profit&#xa;      per hour as stated above but as a ratio to the required time&#xa;      mining those gases. The time gathering the mineral is ommited&#xa;      due to its negligence in calculations. Also, you should be&#xa;      importing the material anyways due to the low volume&#xa;      and refining waste.&#xa;    - Time is reaction possible per hour of mining. i.e. You mine&#xa;      for one hour and you have enough material for 30 reactions.&#xa;      "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="versionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Version 0.1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="createdByLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Created By: Kyle Salter"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
