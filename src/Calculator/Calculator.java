@@ -49,7 +49,7 @@ public class Calculator {
         double volumePerHour = ((3600/cycleTime) * (m3PerCycle));
         double g1PerHour = volumePerHour / Double.parseDouble(recipeTable.getWhere("VOLUME", "NAME", recipeNames.get(0)));
         double g2PerHour = volumePerHour / Double.parseDouble(recipeTable.getWhere("VOLUME", "NAME", recipeNames.get(1)));
-        return 1 / ((Double.parseDouble(recipeTable.getWhere("QUANTITY", "NAME", recipeNames.get(0))) / g1PerHour) + (Double.parseDouble(recipeTable.getWhere("QUANTITY", "NAME", recipeNames.get(0))) / g2PerHour));
+        return 1 / ((Integer.parseInt(recipeTable.getWhere("QUANTITY", "NAME", recipeNames.get(0))) / g1PerHour) + (Integer.parseInt(recipeTable.getWhere("QUANTITY", "NAME", recipeNames.get(1))) / g2PerHour));
 
     }
     

@@ -93,12 +93,19 @@ public class GUI extends javax.swing.JFrame {
             reactionsTable.setValueAt(calc.iskEfficiency(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 3);
             reactionsTable.setValueAt(calc.time(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 4);   
         }
+
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
             String polymerName = rowObject.toString();
+            SQLiteTable recipe = db.getRecipe(polymerName);
+            ArrayList<String> names = recipe.getColumn("NAME");
+            ArrayList<String> quantities = recipe.getColumn("QUANTITY");
             outputTable.setValueAt(calc.profitPerHour(polymerName) * 720, i, 1);
             outputTable.setValueAt(calc.revenuePerHour(polymerName) * 720, i, 2);
-            outputTable.setValueAt(720 / calc.time(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 3);
+            double volumePerHour = (3600/Double.parseDouble(cycleTimeTextField.getText())) * (Double.parseDouble(m3PerCycleTextField.getText()));
+            double gas1PerHour = volumePerHour / Double.parseDouble(recipe.getWhere("VOLUME", "NAME", names.get(0)));
+            double gas2PerHour = volumePerHour / Double.parseDouble(recipe.getWhere("VOLUME", "NAME", names.get(1)));
+            outputTable.setValueAt(((Integer.parseInt(quantities.get(0)) * 720) / gas1PerHour + ((Integer.parseInt(quantities.get(1)) * 720) / gas2PerHour)), i, 3);
             SQLiteTable reaction = db.getReactions();
             outputTable.setValueAt(Double.parseDouble(reaction.getWhere("VOLUME", "NAME", polymerName)) * Double.parseDouble(reaction.getWhere("BATCH", "NAME", polymerName))  * 720, i, 4);
         }
@@ -140,9 +147,7 @@ public class GUI extends javax.swing.JFrame {
        
         double totalminingTime = 0;
         for(int i = 0; i < outputTable.getRowCount(); i++) {
-            Object rowObject = outputTable.getValueAt(i, 0);
-            String polymerName = rowObject.toString();
-            double miningTime = 720 / calc.time(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()));
+            double miningTime = (double)outputTable.getValueAt(i, 3);
             totalminingTime += miningTime;
         }
         monthlyMiningTimeTextField.setText(Double.toString(totalminingTime));
