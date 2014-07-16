@@ -10,15 +10,15 @@ It will be programmed in Java for my Java programming class.
 The Latest Version
 ------------------
 
-v0.1 Complete! Look here for a download link soon.
-Details of the latest version can be viewed on the public github
-repository under https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator
+Download the latest version (v0.1.1) here: https://dl.dropboxusercontent.com/u/66799220/EVE%20Wormhole%20Reactions%20Calculator.rar
+View the latest source code here: https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator/tree/master/src
 
 Documentation
 -------------
 
 View the project proposal here: https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator/blob/master/projectproposal.txt
 Proper documentation of the program and source code is under construction.
+Any and all criticism, thoughts, complaints, etc. are appreciated!
 
 Authors
 -------
