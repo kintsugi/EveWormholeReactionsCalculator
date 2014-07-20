@@ -21,7 +21,7 @@ public class Calculator {
         for(Item material : recipe) {
             totalMaterialValue += material.getPrice() * Integer.parseInt(recipeTable.getWhere("QUANTITY", "NAME", material.getName()));
         }
-        return Integer.parseInt(reactions.getWhere("BATCH", "NAME", reactionName)) * polymer.getPrice() - totalMaterialValue;
+        return (Integer.parseInt(reactions.getWhere("BATCH", "NAME", reactionName)) * polymer.getPrice()) - totalMaterialValue;
     }
     
     public double revenuePerHour(String reactionName) {

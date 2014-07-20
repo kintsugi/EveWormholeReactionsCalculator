@@ -246,7 +246,7 @@ public class GUI extends javax.swing.JFrame {
         reactorsLabel = new javax.swing.JLabel();
         reactorsTextField = new javax.swing.JFormattedTextField();
         optimizeOutputButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        noteLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Eve Wormhole Reactions Calculator");
@@ -273,7 +273,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        C5Button.setText("C5-C6");
+        C5Button.setSelected(true);
+        C5Button.setText("C5 - C6");
         C5Button.setToolTipText("");
         C5Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -743,7 +744,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Note: Resets Output");
+        noteLabel.setText("Note: Clears Output");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -771,7 +772,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jLabel3)
+                        .addComponent(noteLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(tablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -790,7 +791,7 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(optimizeOutputButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
-                .addComponent(jLabel3)
+                .addComponent(noteLabel)
                 .addGap(44, 44, 44))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
@@ -996,7 +997,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton efficiencyButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel m3PerCycleLabel;
     private javax.swing.JTextField m3PerCycleTextField;
     private javax.swing.JRadioButton marginButton;
@@ -1008,6 +1008,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField monthlyMiningTimeTextField;
     private javax.swing.JLabel monthlyOutputVolumeLabel;
     private javax.swing.JTextField monthlyOutputVolumeTextField;
+    private javax.swing.JLabel noteLabel;
     private javax.swing.JLabel optimizeForLabel;
     private javax.swing.JPanel optimizeForPanel;
     private javax.swing.JButton optimizeOutputButton;
