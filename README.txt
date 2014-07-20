@@ -11,6 +11,7 @@ The Latest Version
 ------------------
 
 Download the latest version (v0.1.1) here: https://dl.dropboxusercontent.com/u/66799220/EVE%20Wormhole%20Reactions%20Calculator.rar
+Make sure you have Java 8 installed. You will receive a java exception if it is not.
 View the latest source code here: https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator/tree/master/src
 
 Documentation
