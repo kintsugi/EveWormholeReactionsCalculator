@@ -10,7 +10,7 @@ It will be programmed in Java for my Java programming class.
 The Latest Version
 ------------------
 
-Download the latest version (v0.1.1) here: https://dl.dropboxusercontent.com/u/66799220/EVE%20Wormhole%20Reactions%20Calculator.rar
+Download the latest version (v0.1.2) here: https://dl.dropboxusercontent.com/u/66799220/EVE%20Wormhole%20Reactions%20Calculator.zip
 View the latest source code here: https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator/tree/master/src
 
 Documentation
@@ -35,12 +35,12 @@ Bugs:
 - PDD Fullerene Fibers and Fulleroferrocene total time values do not match individual gas mining values.
 16/7/14: v0.1.1 update
 Bugs:
-- Material Table does not always update when clicking on a row in the reactions and output table.
-- While not really a bug, changing the setup values only update the results when an event occurs.
+ - Material Table does not always update when clicking on a row in the reactions and output table.
+ - While not really a bug, changing the setup values only update the results when an event occurs.
 Changes:
  - Fixed remove reaction button. Currently working as intended.
  - Fixed time values errors.
- 24/7/14: Polished release and ready for public use.
+24/7/14: v0.1.2, Polished release and ready for public use.
 
 
 
