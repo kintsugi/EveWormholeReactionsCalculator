@@ -42,6 +42,8 @@ Bugs:
 Changes:
  - Fixed remove reaction button. Currently working as intended.
  - Fixed time values errors.
+ 
+24/7/14: Polished release and ready for public use.
 
 
 
