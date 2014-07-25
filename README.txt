@@ -11,14 +11,12 @@ The Latest Version
 ------------------
 
 Download the latest version (v0.1.1) here: https://dl.dropboxusercontent.com/u/66799220/EVE%20Wormhole%20Reactions%20Calculator.rar
-Make sure you have Java 8 installed. You will receive a java exception if it is not.
 View the latest source code here: https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator/tree/master/src
 
 Documentation
 -------------
 
-View the project proposal here: https://github.com/KyleDanielSalter/EveWormholeReactionsCalculator/blob/master/projectproposal.txt
-Proper documentation of the program and source code is under construction.
+See the about directory for documentation.
 Any and all criticism, thoughts, complaints, etc. are appreciated!
 
 Authors
@@ -42,8 +40,7 @@ Bugs:
 Changes:
  - Fixed remove reaction button. Currently working as intended.
  - Fixed time values errors.
- 
-24/7/14: Polished release and ready for public use.
+ 24/7/14: Polished release and ready for public use.
 
 
 
