@@ -1,8 +1,5 @@
 package GUI;
-import Calculator.Calculator;
-import Database.ProgramDatabase;
-import Database.SQLiteTable;
-import PriceFetcher.PriceFetcher;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -15,6 +12,10 @@ import java.util.Collections;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import Calculator.Calculator;
+import Database.ProgramDatabase;
+import Database.SQLiteTable;
+import PriceFetcher.PriceFetcher;
 
 public class GUI extends javax.swing.JFrame {
     
@@ -25,6 +26,7 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         setLocationRelativeTo(null);
+        //Load the icon.
         BufferedImage iconImage = null;
         try {
             File imageFile = new File("data/icon.png");
@@ -32,13 +34,16 @@ public class GUI extends javax.swing.JFrame {
         } catch(IOException e) {
             e.printStackTrace();
         }
+        setIconImage(iconImage);
+        //Disable row movement.
         reactionsTable.getTableHeader().setReorderingAllowed(false);
         outputTable.getTableHeader().setReorderingAllowed(false);
         materialsTable.getTableHeader().setReorderingAllowed(false);
-        setIconImage(iconImage);
+        //Load the database and price fetcher.
         ProgramDatabase.load();
-        ProgramDatabase db = new ProgramDatabase();
         PriceFetcher.load();
+        ProgramDatabase db = new ProgramDatabase();
+        //Configure the button groups and default button selections.
         marginButtonActionPerformed(null);
         ButtonGroup wormholeClassButtonGroup = new ButtonGroup();
         ButtonGroup optimizeForButtonGroup = new ButtonGroup();
@@ -56,6 +61,7 @@ public class GUI extends javax.swing.JFrame {
         optimizeOutputButton.add(BorderLayout.NORTH, optimizebuttonlabel1);
         optimizeOutputButton.add(BorderLayout.SOUTH, optimizebuttonlabel2);
         
+        //Listeners for table selection events.
         reactionsTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -73,7 +79,7 @@ public class GUI extends javax.swing.JFrame {
                 updateMaterialTable(outputTable.getValueAt(row, 0).toString());
             }
         });
-        
+        //Load the polymer names into the reactions table.
         SQLiteTable reactions = db.getReactions();
         ArrayList<String> polymerNames = reactions.getColumn("NAME");
         for(int i = 0; i < polymerNames.size(); i++) {
@@ -85,6 +91,7 @@ public class GUI extends javax.swing.JFrame {
     private void calculate() {
         ProgramDatabase db = new ProgramDatabase();
         Calculator calc = new Calculator();
+        //Populate the reactions table data.
         for(int i = 0; i < reactionsTable.getRowCount(); i++) {
             Object rowObject = reactionsTable.getValueAt(i, 0);
             String polymerName = rowObject.toString();
@@ -93,7 +100,7 @@ public class GUI extends javax.swing.JFrame {
             reactionsTable.setValueAt(calc.iskEfficiency(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 3);
             reactionsTable.setValueAt(calc.time(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText())), i, 4);   
         }
-
+        //Populate the reactions table data for every reactions currently placed in there.
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
             String polymerName = rowObject.toString();
@@ -109,7 +116,7 @@ public class GUI extends javax.swing.JFrame {
             SQLiteTable reaction = db.getReactions();
             outputTable.setValueAt(Double.parseDouble(reaction.getWhere("VOLUME", "NAME", polymerName)) * Double.parseDouble(reaction.getWhere("BATCH", "NAME", polymerName))  * 720, i, 4);
         }
-        
+        //Calculate the total monthly revenue using the data from the output table.
         BigDecimal totalMonthlyRevenue = new BigDecimal(0);
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
@@ -120,7 +127,7 @@ public class GUI extends javax.swing.JFrame {
         }
         BigInteger totalMonthlyRevenueBI = totalMonthlyRevenue.toBigInteger();
         totalMonthlyRevenueTextField.setText(NumberFormat.getIntegerInstance().format(totalMonthlyRevenueBI) + " ISK");
-        
+        //Calculate the total monthly profit using the data from the output table.
         BigDecimal totalMonthlyProfit = new BigDecimal("0");
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
@@ -131,7 +138,7 @@ public class GUI extends javax.swing.JFrame {
         }
         BigInteger totalMonthlyProfitBI = totalMonthlyProfit.toBigInteger();
         totalMonthlyProfitTextField.setText(NumberFormat.getIntegerInstance().format(totalMonthlyProfitBI) + " ISK");
-        
+        //Calculate the average efficiency of the setup using the data from the output table.
         BigDecimal totalEfficiency = new BigDecimal("0");
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
@@ -139,21 +146,21 @@ public class GUI extends javax.swing.JFrame {
             BigDecimal efficiency = new BigDecimal(Double.toString(calc.iskEfficiency(polymerName, Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()))));
             totalEfficiency = totalEfficiency.add(efficiency);
         }
+        //Only average the amount of there is more than one reaction in the output table.
         int rowCount = outputTable.getRowCount();
         if(rowCount > 1)
             totalEfficiency = totalEfficiency.divide(new BigDecimal(rowCount), 2, RoundingMode.HALF_UP);        
         BigInteger totalEfficiencyBI = totalEfficiency.toBigInteger();
         averageEfficiencyTextField.setText(NumberFormat.getIntegerInstance().format(totalEfficiencyBI));
-       
+       //Calculate the monthly mining time in hours.
         double totalminingTime = 0;
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             double miningTime = (double)outputTable.getValueAt(i, 3);
             totalminingTime += miningTime;
         }
         monthlyMiningTimeTextField.setText(Double.toString(totalminingTime));
-        
+        //Calculate the monthly input volume.
         double monthlyInputVolume = 0;
-        
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
             String polymerName = rowObject.toString();
@@ -165,7 +172,7 @@ public class GUI extends javax.swing.JFrame {
             }
         }
         monthlyInputVolumeTextField.setText(NumberFormat.getIntegerInstance().format(monthlyInputVolume) + " m³");
-        
+        //Calculate the monthly output volume.
         double monthlyOutputVolume = 0;
         for(int i = 0; i < outputTable.getRowCount(); i++) {
             Object rowObject = outputTable.getValueAt(i, 0);
@@ -179,13 +186,16 @@ public class GUI extends javax.swing.JFrame {
     private void updateMaterialTable(String polymerName) {
         ProgramDatabase db = new ProgramDatabase();
         SQLiteTable recipe = db.getRecipe(polymerName);
+        //Retrieve the recipe details according to the polymer reaction requested.
         ArrayList<String> names = recipe.getColumn("NAME");
         ArrayList<String> quantities = recipe.getColumn("QUANTITY");
         ArrayList<String> volumes = recipe.getColumn("VOLUME");
+        //Populate the materials table.
         for(int i = 0; i < names.size(); i++) {
             materialsTable.setValueAt(names.get(i), i, 0);
-            materialsTable.setValueAt(Integer.parseInt(quantities.get(i)) * 720, i, 1);
-            materialsTable.setValueAt(Integer.parseInt(quantities.get(i)) * Double.parseDouble(volumes.get(i)) * 720, i, 2);
+            materialsTable.setValueAt(Integer.parseInt(quantities.get(i)) * 720, i, 1); //Monthly quantity of material.
+            materialsTable.setValueAt(Integer.parseInt(quantities.get(i)) * Double.parseDouble(volumes.get(i)) * 720, i, 2); //Monthly volume of material.
+            //Skip the time calculation for the third iteration, as that SHOULD (if the db is setup correctly) be the mineral material. The mineral time calculation is omitted due to its negilibility.
             if(i < 2) {
                 double volumePerHour = (3600/Double.parseDouble(cycleTimeTextField.getText())) * (Double.parseDouble(m3PerCycleTextField.getText()));
                 double gasPerHour = volumePerHour / Double.parseDouble(recipe.getWhere("VOLUME", "NAME", names.get(i)));
@@ -353,20 +363,10 @@ public class GUI extends javax.swing.JFrame {
         cycleTimeLabel.setText("Cycle Time (s)");
 
         cycleTimeTextField.setText("30");
-        cycleTimeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cycleTimeTextFieldActionPerformed(evt);
-            }
-        });
 
         m3PerCycleLabel.setText("m3 Per Cycle");
 
         m3PerCycleTextField.setText("80");
-        m3PerCycleTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                m3PerCycleTextFieldActionPerformed(evt);
-            }
-        });
 
         wipLabel.setText("To be developed. Use a tool such as EVE Isk Per Hour to calculate");
         wipLabel.setToolTipText("");
@@ -490,11 +490,6 @@ public class GUI extends javax.swing.JFrame {
 
         monthlyInputVolumeTextField.setEditable(false);
         monthlyInputVolumeTextField.setBackground(new java.awt.Color(255, 255, 255));
-        monthlyInputVolumeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthlyInputVolumeTextFieldActionPerformed(evt);
-            }
-        });
 
         monthlyOutputVolumeLabel.setText("Monthly Output Volume");
 
@@ -505,11 +500,6 @@ public class GUI extends javax.swing.JFrame {
 
         averageEfficiencyTextField.setEditable(false);
         averageEfficiencyTextField.setBackground(new java.awt.Color(255, 255, 255));
-        averageEfficiencyTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                averageEfficiencyTextFieldActionPerformed(evt);
-            }
-        });
 
         monthlyMiningTimeLabel.setText("Monthly Mining Time(Hr)");
 
@@ -803,13 +793,16 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addReactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addReactionButtonActionPerformed
+        //Get the currently selected rows in the reactions table.
         int[] selectedRowsArray = reactionsTable.getSelectedRows();
         ArrayList<Integer> selectedRows = new ArrayList(selectedRowsArray.length);
         for(int i = 0; i < selectedRowsArray.length; i++)
             selectedRows.add(selectedRowsArray[i]);
+        //Add the selected rows to the output table.
         for(Integer i : selectedRows) {
             ((DefaultTableModel)outputTable.getModel()).addRow(new Object[] {reactionsTable.getValueAt(i, 0), null, null, null, null, null});
         }
+        //populate the output table.
         calculate();
     }//GEN-LAST:event_addReactionButtonActionPerformed
 
@@ -831,25 +824,10 @@ public class GUI extends javax.swing.JFrame {
         optimizeTime = false;
     }//GEN-LAST:event_marginButtonActionPerformed
 
-    private void averageEfficiencyTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_averageEfficiencyTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_averageEfficiencyTextFieldActionPerformed
-
-    private void monthlyInputVolumeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyInputVolumeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_monthlyInputVolumeTextFieldActionPerformed
-
-    private void m3PerCycleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m3PerCycleTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_m3PerCycleTextFieldActionPerformed
-
-    private void cycleTimeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cycleTimeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cycleTimeTextFieldActionPerformed
-
     private void C1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1ButtonActionPerformed
         ProgramDatabase db = new ProgramDatabase();
         SQLiteTable reactions = db.getReactions();
+        //Reset the reactions table.
         for(int i = 0; i < reactionsTable.getRowCount(); i++) {
             ((DefaultTableModel)reactionsTable.getModel()).removeRow(i); i--;
         }
@@ -857,6 +835,7 @@ public class GUI extends javax.swing.JFrame {
         for(int i = 0; i < polymerNames.size(); i++) {
             ((DefaultTableModel)reactionsTable.getModel()).addRow( new Object[] {polymerNames.get(i), null, null, null, null});
         }
+        //Repopulate the reactions table with gases only found in C1-C2 wormholes.
         for(int i = 0; i < reactionsTable.getRowCount(); i++) {
             String rowName = (String) reactionsTable.getValueAt(i, 0);
             if(rowName.equalsIgnoreCase("C3-FTM Acid") || rowName.equalsIgnoreCase("Carbon-86 Epoxy Resin") || rowName.equalsIgnoreCase("Scandium Metallofullerene") ||rowName.equalsIgnoreCase("Graphene Nanoribbons")) {
@@ -869,6 +848,7 @@ public class GUI extends javax.swing.JFrame {
     private void C3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C3ButtonActionPerformed
         ProgramDatabase db = new ProgramDatabase();
         SQLiteTable reactions = db.getReactions();
+        //Reset the reactions table.
         for(int i = 0; i < reactionsTable.getRowCount(); i++) {
             ((DefaultTableModel)reactionsTable.getModel()).removeRow(i); i--;
         }
@@ -876,6 +856,7 @@ public class GUI extends javax.swing.JFrame {
         for(int i = 0; i < polymerNames.size(); i++) {
             ((DefaultTableModel)reactionsTable.getModel()).addRow( new Object[] {polymerNames.get(i), null, null, null, null});
         }
+        //Repopulate the reactions table with gases only found in C1-C4 wormholes.
         for(int i = 0; i < reactionsTable.getRowCount(); i++) {
             String rowName = (String) reactionsTable.getValueAt(i, 0);
             if(rowName.equalsIgnoreCase("C3-FTM Acid") || rowName.equalsIgnoreCase("Carbon-86 Epoxy Resin")) {
@@ -888,9 +869,11 @@ public class GUI extends javax.swing.JFrame {
     private void C5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C5ButtonActionPerformed
         ProgramDatabase db = new ProgramDatabase();
         SQLiteTable reactions = db.getReactions();
+        //Reset the reactions table.
         for(int i = 0; i < reactionsTable.getRowCount(); i++) {
             ((DefaultTableModel)reactionsTable.getModel()).removeRow(i); i--;
         }
+        //Repopulate the reactions table
         ArrayList<String> polymerNames = reactions.getColumn("NAME");
         for(int i = 0; i < polymerNames.size(); i++) {
             ((DefaultTableModel)reactionsTable.getModel()).addRow( new Object[] {polymerNames.get(i), null, null, null, null});
@@ -899,11 +882,14 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_C5ButtonActionPerformed
 
     private void removeReactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeReactionButtonActionPerformed
+        //Get the currently selected rows in the output table.
         int[] selectedRowsArray = outputTable.getSelectedRows();
         ArrayList<Integer> selectedRows = new ArrayList<>(selectedRowsArray.length);
         for(int i = 0; i < selectedRowsArray.length; i++)
             selectedRows.add(selectedRowsArray[i]);
+        //Sort the values of the selectedRows array from greatest to smallest.
         Collections.sort(selectedRows, Collections.reverseOrder());
+        //Remove the selected Rows and recalculate.
         for (Integer selectedRow : selectedRows)
             ((DefaultTableModel)outputTable.getModel()).removeRow(selectedRow);
         calculate();
@@ -911,10 +897,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void optimizeOutputButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optimizeOutputButtonActionPerformed
         Calculator calc = new Calculator();
+        //Clear the output table.
         for(int i = 0; i < outputTable.getRowCount(); i++ ) {
             ((DefaultTableModel)outputTable.getModel()).removeRow(0); i--;
         }
         if(optimizeProfit) {
+            //Find the highest profit from the reactions table.
             double bestProfit = 0; int bestProfitRow = 0;
             for(int i = 0; i < reactionsTable.getRowCount(); i++) {
                 if(bestProfit < (double)reactionsTable.getValueAt(i, 1)) {
@@ -922,28 +910,25 @@ public class GUI extends javax.swing.JFrame {
                     bestProfitRow = i;
                 }
             }
+            //Add the best profit reaction to the output table for as many times as the number of reactors specified.
             for(int i = 0; i < Integer.parseInt(reactorsTextField.getText()); i++) {
                 ((DefaultTableModel)outputTable.getModel()).addRow( new Object[] {reactionsTable.getValueAt(bestProfitRow, 0)});
             }
-            calculate();
         } else if(optimizeTime) {
             double bestTime = 0; int bestTimeRow = 0;
+            //Calculate the best time efficiency for each row and find the highest value
             for(int i = 0; i < reactionsTable.getRowCount(); i++) {
                 if(bestTime < calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()))) {
                     bestTime = calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()));
                     bestTimeRow = i;
-                } else if(bestTime == calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()))) {
-                    if((double)reactionsTable.getValueAt(bestTimeRow, 4) < (double)reactionsTable.getValueAt(i, 4)) {
-                        bestTime = calc.timeEfficiency((String)reactionsTable.getValueAt(i, 0), Double.parseDouble(cycleTimeTextField.getText()), Double.parseDouble(m3PerCycleTextField.getText()));
-                        bestTimeRow = i;
-                    }
                 }
             }
+            //Add the best time efficienct reaction to the output table for as many times as the number of reactors specified.
             for(int i = 0; i < Integer.parseInt(reactorsTextField.getText()); i++) {
                 ((DefaultTableModel)outputTable.getModel()).addRow( new Object[] {reactionsTable.getValueAt(bestTimeRow, 0)});
             }
-            calculate();
         }else if(optimizeEfficiency) {
+            //Find the highest efficiency from the reactions table.
             double bestEfficiency = 0; int bestEfficiencyRow = 0;
             for(int i = 0; i < reactionsTable.getRowCount(); i++) {
                 if(bestEfficiency < (double)reactionsTable.getValueAt(i, 3)) {
@@ -951,19 +936,20 @@ public class GUI extends javax.swing.JFrame {
                     bestEfficiencyRow = i;
                 }
             }
+            //Add the most efficient reaction to the output table for as many times as the number of reactors specified.
             for(int i = 0; i < Integer.parseInt(reactorsTextField.getText()); i++) {
                 ((DefaultTableModel)outputTable.getModel()).addRow( new Object[] {reactionsTable.getValueAt(bestEfficiencyRow, 0)});
             }
-            calculate();
         }
+        calculate();
     }//GEN-LAST:event_optimizeOutputButtonActionPerformed
 
     private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
-    About.main(null);
+        About.main(null);
     }//GEN-LAST:event_aboutButtonActionPerformed
 
     public static void main(String args[]) {
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        // Look and feel setting code
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
@@ -975,9 +961,9 @@ public class GUI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new GUI().setVisible(true);
             }

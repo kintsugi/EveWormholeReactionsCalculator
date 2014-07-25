@@ -11,11 +11,9 @@ public class Item {
     private double price;
     
     public Item(String newName, int newID) {
-        name = newName; id = newID; update();
-    }
-    
-    public void update() {
+        name = newName; id = newID; 
         try {
+            //Query the price from the Eve Central Web API and parse it.
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser saxParser = factory.newSAXParser();
             EveCentralHandler handler = new EveCentralHandler();
@@ -23,6 +21,7 @@ public class Item {
             saxParser.parse(new InputSource(link.openStream()), handler);
             price = handler.getPrice();
         } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
             price = 0;
         }
     }
@@ -40,6 +39,7 @@ public class Item {
     }
     
     private String composeQuery() {
+        //System used is Jita.
         return "http://api.eve-central.com/api/marketstat?typeid=" + id + "&usesystem=30000142";
     }
 }

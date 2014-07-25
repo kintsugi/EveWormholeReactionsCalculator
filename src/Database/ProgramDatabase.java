@@ -7,27 +7,28 @@ public class ProgramDatabase {
     
     static private SQLiteTable itemTable;
     static private SQLiteTable reactionsTable;
-    static private SQLiteTable userDataTable;
     static private SQLiteTable recipeTableIndex;
     static private ArrayList<SQLiteTable> recipeTables;
     
     static public void load() {
         Connection dataDB = null; Connection recipeDB = null;
+        //Validate and connect to the data database.
         try {
             Class.forName("org.sqlite.JDBC");
             dataDB = DriverManager.getConnection("jdbc:sqlite:data/data.db");
         } catch(ClassNotFoundException | SQLException e) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
         }
+        //Validate and connect to the recipe database.
         try {
             Class.forName("org.sqlite.JDBC");
             recipeDB = DriverManager.getConnection("jdbc:sqlite:data/recipe.db");
         } catch(ClassNotFoundException | SQLException e) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );  
         }
+        //Populate the in memory tables from the database.
         itemTable = new SQLiteTable(dataDB, "items");
         reactionsTable = new SQLiteTable(dataDB, "reactions");
-        userDataTable = new SQLiteTable(dataDB, "userdata");
         recipeTableIndex = new SQLiteTable(recipeDB, "tableindex");
         recipeTables = new ArrayList();
         for(int i = 0; i < recipeTableIndex.getNumRows(); i++) {
@@ -54,9 +55,5 @@ public class ProgramDatabase {
     public SQLiteTable getRecipe(String reactionName) {
         String ID = recipeTableIndex.getWhere("ID", "REACTIONNAME", reactionName);
         return recipeTables.get(Integer.parseInt(ID) - 1);
-    }
-    
-    public SQLiteTable getUserData(String dataName) {
-        return userDataTable;
     }
 }

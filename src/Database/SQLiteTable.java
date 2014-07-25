@@ -12,8 +12,10 @@ public class SQLiteTable {
             Statement stmt = db.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM " + tableName);
             ResultSetMetaData rsmd = rs.getMetaData();
+            //Retrieve the column names.
             for(int i = 1; i <= rsmd.getColumnCount(); i++)
                 columns.add(rsmd.getColumnName(i));
+            //Get each value from the table.
             while(rs.next()) {
                 ArrayList<String> newRow = new ArrayList();
                 for(String s : columns)
@@ -36,7 +38,7 @@ public class SQLiteTable {
     public ArrayList<String> getColumnNames() {
         return columns;
     }
-    
+    //Get all the values in the requested column.
     public ArrayList<String> getColumn(String columnName) {
         ArrayList<String> ret = new ArrayList(); int columnNumber;
         for(columnNumber = 0; columnNumber < columns.size(); columnNumber++) {
@@ -47,11 +49,11 @@ public class SQLiteTable {
             ret.add(row.get(columnNumber));
         return ret;
     }
-    
+    //Return the requested row.
     public ArrayList<String> getRow(int row) {
         return rows.get(row);
     }
-    
+    //Gets the value in column (name specified by variable column), where the value in the column (name specified by where) equals the value in the variable equals.
     public String getWhere(String column, String where, String equals) {
         int desiredColumnNumber; int whereColumnNumber;
         for(desiredColumnNumber = 0; desiredColumnNumber < columns.size(); desiredColumnNumber++) {

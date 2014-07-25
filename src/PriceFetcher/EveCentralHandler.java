@@ -18,17 +18,16 @@ public class EveCentralHandler extends DefaultHandler {
     
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        //Set the flags to true when <sell> <min> is reached.
         if (qName.equalsIgnoreCase("sell"))
             isSell = true;
         if (qName.equalsIgnoreCase("min") && isSell)
             isSellMin = true;
     }
-    
-    public void endElement() {
-    }
         
     @Override
     public void characters (char ch[], int start, int length) throws SAXException {
+        //When both flags are true, retrieve the value, then reset the flags.
         if(isSell && isSellMin) {
             price = Double.parseDouble(new String(ch, start, length));
             isSell = false; isSellMin = false;
